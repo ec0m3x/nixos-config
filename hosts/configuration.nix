@@ -162,6 +162,7 @@
   package = pkgs.nixFlakes;
   extraOptions = ''
     experimental-features = nix-command flakes
+    warn-dirty = false
   '';  
   };
 
