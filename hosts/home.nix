@@ -37,6 +37,7 @@
       firefox
       google-chrome
       appimage-run
+      webex
       
       # File management
       p7zip
