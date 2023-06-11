@@ -70,6 +70,14 @@
       userEmail = "me@example.com";
       #includes = [{ path = "~/.gitconfig.local"; }];
     };
+    gh = {
+      enable = true;
+      enableGitCredentialHelper = true;
+      settings = {
+        prompt = "enabled";
+        git_protocol = "https";
+      };
+    };
   };
 
   services = {                            # Applets
