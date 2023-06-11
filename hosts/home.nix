@@ -11,10 +11,7 @@
 #           └─ default.nix
 #
 
-
 { config, lib, pkgs, user, ... }:
-
-
 
 {
 
@@ -69,8 +66,9 @@
     };
     git = {
       enable = true;
-      userName = "ec0m3x";
-      userEmail = "skoch@sks-concept.de";
+      userName = "${user}";
+      userEmail = "me@example.com";
+      #includes = [{ path = "~/.gitconfig.local"; }];
     };
   };
 
