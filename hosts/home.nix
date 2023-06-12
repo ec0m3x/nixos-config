@@ -79,6 +79,9 @@
         git_protocol = "https";
       };
     };
+    yt-dlp = {
+      enable = true;
+    };
   };
 
   services = {                            # Applets
