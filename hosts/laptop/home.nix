@@ -11,6 +11,11 @@
 
 {
 
+  imports =
+    [
+      ../../modules/desktop/gnome/home.nix  # Window Manager
+    ];
+
   home = {                                # Specific packages for desktop
     packages = with pkgs; [    
       # Imported in default or from modules

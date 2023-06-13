@@ -50,9 +50,6 @@
       android-studio
       jetbrains.pycharm-professional
       vscode
-
-      # Gnome extensions
-      gnomeExtensions.appindicator 
     ]; 
   };
 

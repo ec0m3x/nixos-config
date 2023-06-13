@@ -21,7 +21,8 @@
 {
   imports =                                               # For now, if applying to other system, swap files
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
-    [(import ../../modules/programs/games.nix)];           # Games
+    [(import ../../modules/programs/games.nix)] ++        # Games
+    [(import ../../modules/desktop/gnome/default.nix)];   # Window Manager
 
   # Bootloader.
   boot = {                                  # Boot options
@@ -31,6 +32,7 @@
       systemd-boot.enable = true;
   	  efi.canTouchEfiVariables = true;
     };
+  };
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
@@ -52,6 +54,5 @@
 
   # Tuxedo specific
   hardware.tuxedo-keyboard.enable = true;
-
 
 }

@@ -123,13 +123,14 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  package = pkgs.nixFlakes;
-  extraOptions = ''
-    experimental-features = nix-command flakes
-    warn-dirty = false
-  '';  
+    package = pkgs.nixVersions.unstable;    # Enable nixFlakes on system
+    registry.nixpkgs.flake = inputs.nixpkgs;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs          = true
+      keep-derivations      = true
+    '';
   };
-
   nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
 
   ## Enable Virtualisation and libvirtd

@@ -10,13 +10,15 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable"; 
+
     home-manager = {
       url = github:nix-community/home-manager;
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs @ { self, nixpkgs, home-manager, ... }: 
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, ... }: 
     let
       system = "x86_64-linux";
       user = "ec0m3x";
@@ -33,7 +35,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit inputs user system home-manager location;
+          inherit nixpkgs nixpkgs-unstable inputs user system home-manager location;
         }
       );
     }; 
