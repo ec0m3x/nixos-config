@@ -139,13 +139,13 @@
     #  app-menu = false;
     #  clock-menu-position = 1;
     #  clock-menu-position-offset = 7;
-    };
+    #};
     #"org/gnome/shell/extensions/caffeine" = {
     #  enable-fullscreen = true;
     #  restore-state = true;
     #  show-indicator = true;
     #  show-notification = false;
-    };
+    #};
     "org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.9;
     };
@@ -161,14 +161,14 @@
     #  widget-position = "left";
     #  widget-orientation = "horizontal";
     #  icons-style = "circles";
-    };
+    #};
     "org/gnome/shell/extensions/bluetooth-quick-connect" = {
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
     #"org/gnome/shell/extensions/pip-on-top" = {
     #  stick = true;
-    };
+    #};
     "org/gnome/shell/extensions/forge" = {
       window-gap-size = 8;
       dnd-center-layout = "stacked";
