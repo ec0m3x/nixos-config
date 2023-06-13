@@ -33,7 +33,7 @@
         #"battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
         #"pip-on-top@rafostar.github.com"
-        #"forge@jmmaranan.com"
+        "forge@jmmaranan.com"
         # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
         # "fullscreen-avoider@noobsai.github.com"     # Incompatible with dash-to-panel
       ];
