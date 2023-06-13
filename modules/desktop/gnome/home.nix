@@ -21,7 +21,7 @@
       ];
       disable-user-extensions = false;
       enabled-extensions = [
-        "trayIconsReloaded@selfmade.pl"
+        #"trayIconsReloaded@selfmade.pl"
         "blur-my-shell@aunetx"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         #"dash-to-panel@jderose9.github.com"
@@ -30,7 +30,7 @@
         "clipboard-indicator@tudmotu.com"
         #"horizontal-workspace-indicator@tty2.io"
         "bluetooth-quick-connect@bjarosze.gmail.com"
-        "battery-indicator@jgotti.org"
+        #"battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
         #"pip-on-top@rafostar.github.com"
         #"forge@jmmaranan.com"
@@ -87,7 +87,7 @@
     };
 
     "org/gnome/mutter" = {
-      workspaces-only-on-primary = false;
+      workspaces-only-on-primary = true;
       center-new-windows = true;
       edge-tiling = false;                            # Disabled when tiling
     };
@@ -110,41 +110,41 @@
     };
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>Return";
-      command = "xkb";
+      command = "kgx";
       name = "open-terminal";
     };
     
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
-      binding = "<Super>e";
+      binding = "<Super>n";
       command = "nautilus";
       name = "open-file-browser";
     };
 
-    "org/gnome/shell/extension/dash-to-panel" = {     # Possibly need to set this manually
-      panel-position = ''{"0":"TOP","1":"Top"}'';
-      panel-sizes = ''{"0":24,"1":24}'';
-      panel-element-positions-monitors-sync = true;
-      appicon-margin = 0;
-      appicon-padding = 4;
-      dot-position = "TOP";
-      dot-style-focused = "SOLID";
-      dot-style-unfocused = "DOTS";
-      animate-appicon-hover = true;
-      animate-appicon-hover-animation-travel = "{'SIMPLE': 0.14999999999999999, 'RIPPLE': 0.40000000000000002, 'PLANK': 0.0}";
-      isolate-monitors = true;
+    #"org/gnome/shell/extension/dash-to-panel" = {     # Possibly need to set this manually
+    #  panel-position = ''{"0":"TOP","1":"Top"}'';
+    #  panel-sizes = ''{"0":24,"1":24}'';
+    #  panel-element-positions-monitors-sync = true;
+    #  appicon-margin = 0;
+    #  appicon-padding = 4;
+    #  dot-position = "TOP";
+    #  dot-style-focused = "SOLID";
+    #  dot-style-unfocused = "DOTS";
+    #  animate-appicon-hover = true;
+    #  animate-appicon-hover-animation-travel = "{'SIMPLE': 0.14999999999999999, 'RIPPLE': 0.40000000000000002, 'PLANK': 0.0}";
+    #  isolate-monitors = true;
+    #};
+    #"org/gnome/shell/extensions/just-perfection" = {
+    #  theme = true;
+    #  activities-button = false;
+    #  app-menu = false;
+    #  clock-menu-position = 1;
+    #  clock-menu-position-offset = 7;
     };
-    "org/gnome/shell/extensions/just-perfection" = {
-      theme = true;
-      activities-button = false;
-      app-menu = false;
-      clock-menu-position = 1;
-      clock-menu-position-offset = 7;
-    };
-    "org/gnome/shell/extensions/caffeine" = {
-      enable-fullscreen = true;
-      restore-state = true;
-      show-indicator = true;
-      show-notification = false;
+    #"org/gnome/shell/extensions/caffeine" = {
+    #  enable-fullscreen = true;
+    #  restore-state = true;
+    #  show-indicator = true;
+    #  show-notification = false;
     };
     "org/gnome/shell/extensions/blur-my-shell" = {
       brightness = 0.9;
@@ -157,17 +157,17 @@
       customize = true;
       sigma = 0;
     };
-    "org/gnome/shell/extensions/horizontal-workspace-indicator" = {
-      widget-position = "left";
-      widget-orientation = "horizontal";
-      icons-style = "circles";
+    #"org/gnome/shell/extensions/horizontal-workspace-indicator" = {
+    #  widget-position = "left";
+    #  widget-orientation = "horizontal";
+    #  icons-style = "circles";
     };
     "org/gnome/shell/extensions/bluetooth-quick-connect" = {
       show-battery-icon-on = true;
       show-battery-value-on = true;
     };
-    "org/gnome/shell/extensions/pip-on-top" = {
-      stick = true;
+    #"org/gnome/shell/extensions/pip-on-top" = {
+    #  stick = true;
     };
     "org/gnome/shell/extensions/forge" = {
       window-gap-size = 8;
@@ -207,11 +207,12 @@
   };
 
   home.packages = with pkgs; [
-    gnomeExtensions.tray-icons-reloaded
+    #gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.removable-drive-menu
     #gnomeExtensions.dash-to-panel
-    gnomeExtensions.battery-indicator-upower
+    #gnomeExtensions.battery-indicator-upower
     #gnomeExtensions.just-perfection
     #gnomeExtensions.caffeine
     gnomeExtensions.clipboard-indicator
@@ -220,7 +221,7 @@
     gnomeExtensions.gsconnect                         # kdeconnect enabled in default.nix
     #gnomeExtensions.pip-on-top
     gnomeExtensions.pop-shell
-    #gnomeExtensions.forge
+    gnomeExtensions.forge
     # gnomeExtensions.fullscreen-avoider
     # gnomeExtensions.dash-to-dock
   ];
