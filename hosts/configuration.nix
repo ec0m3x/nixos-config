@@ -90,16 +90,16 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  vim 
-  python3
-  git
-  wget
-  killall
-  texlive.combined.scheme-full
-  pciutils
-  usbutils
-  virt-manager
-  discord
+    vim 
+    python3
+    git
+    wget
+    killall
+    texlive.combined.scheme-full
+    pciutils
+    usbutils
+    virt-manager
+    discord
   ];
 
   # Enable flatpaks
