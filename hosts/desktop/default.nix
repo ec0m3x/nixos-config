@@ -69,14 +69,14 @@
   };
 
   # Share home folder in local network
-  services.samba = {
-    enable = true;
-    shares = {
-      share = {
-        "path" = "home/${user}";
-        "guest ok" = "yes";
-        "read only" = "no";
-      };
-    };
-  };
+  #services.samba = {
+  #  enable = true;
+  #  shares = {
+  #    share = {
+  #      "path" = "home/${user}";
+  #      "guest ok" = "yes";
+  #      "read only" = "no";
+  #    };
+  #  };
+  #};
 }
