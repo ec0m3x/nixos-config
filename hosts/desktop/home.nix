@@ -22,7 +22,8 @@
       #discord          # Comms           # See overlay default.nix
       ffmpeg           # Video Support
       gimp              # Graphical Editor
-      inkscape         # Vector Graphical Editor
+      inkscape
+      brave         # Vector Graphical Editor
     ];
   };
 }
