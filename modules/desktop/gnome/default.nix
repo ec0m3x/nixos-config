@@ -2,7 +2,7 @@
 # Gnome configuration
 #
 
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, user, ... }:
 
 {
   programs = {
