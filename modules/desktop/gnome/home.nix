@@ -32,6 +32,7 @@
         "bluetooth-quick-connect@bjarosze.gmail.com"
         #"battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
+        "https://github.com/ubuntu/gnome-shell-extension-appindicator"
         #"pip-on-top@rafostar.github.com"
         "forge@jmmaranan.com"
         # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
@@ -146,17 +147,17 @@
     #  show-indicator = true;
     #  show-notification = false;
     #};
-    "org/gnome/shell/extensions/blur-my-shell" = {
-      brightness = 0.9;
-    };
-    "org/gnome/shell/extensions/blur-my-shell/panel" = {
-      customize = true;
-      sigma = 0;
-    };
-    "org/gnome/shell/extensions/blur-my-shell/overview" = { # Temporary = D2D Bug
-      customize = true;
-      sigma = 0;
-    };
+    #"org/gnome/shell/extensions/blur-my-shell" = {
+    #  brightness = 0.9;
+    #};
+    #"org/gnome/shell/extensions/blur-my-shell/panel" = {
+    #  customize = true;
+    #  sigma = 0;
+    #};
+    #"org/gnome/shell/extensions/blur-my-shell/overview" = { # Temporary = D2D Bug
+    #  customize = true;
+    #  sigma = 0;
+    #};
     #"org/gnome/shell/extensions/horizontal-workspace-indicator" = {
     #  widget-position = "left";
     #  widget-orientation = "horizontal";
