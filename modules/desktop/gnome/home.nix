@@ -21,7 +21,7 @@
       ];
       disable-user-extensions = false;
       enabled-extensions = [
-        "trayIconsReloaded@selfmade.pl"
+        #"trayIconsReloaded@selfmade.pl"
         "blur-my-shell@aunetx"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         #"dash-to-panel@jderose9.github.com"
@@ -32,7 +32,7 @@
         "bluetooth-quick-connect@bjarosze.gmail.com"
         #"battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
-        #"https://github.com/ubuntu/gnome-shell-extension-appindicator"
+        "appindicatorsupport@rgcjonas.gmail.com"
         #"pip-on-top@rafostar.github.com"
         "forge@jmmaranan.com"
         # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
@@ -208,8 +208,8 @@
   };
 
   home.packages = with pkgs; [
-    gnomeExtensions.tray-icons-reloaded
-    #gnomeExtensions.appindicator
+    #gnomeExtensions.tray-icons-reloaded
+    gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.removable-drive-menu
     #gnomeExtensions.dash-to-panel
