@@ -32,7 +32,7 @@
         "bluetooth-quick-connect@bjarosze.gmail.com"
         #"battery-indicator@jgotti.org"
         "gsconnect@andyholmes.github.io"
-        "https://github.com/ubuntu/gnome-shell-extension-appindicator"
+        #"https://github.com/ubuntu/gnome-shell-extension-appindicator"
         #"pip-on-top@rafostar.github.com"
         "forge@jmmaranan.com"
         # "dash-to-dock@micxgx.gmail.com"             # Dash to panel alternative
