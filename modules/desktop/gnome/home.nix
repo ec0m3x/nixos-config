@@ -21,7 +21,7 @@
       ];
       disable-user-extensions = false;
       enabled-extensions = [
-        #"trayIconsReloaded@selfmade.pl"
+        "trayIconsReloaded@selfmade.pl"
         "blur-my-shell@aunetx"
         "drive-menu@gnome-shell-extensions.gcampax.github.com"
         #"dash-to-panel@jderose9.github.com"
@@ -208,8 +208,8 @@
   };
 
   home.packages = with pkgs; [
-    #gnomeExtensions.tray-icons-reloaded
-    gnomeExtensions.appindicator
+    gnomeExtensions.tray-icons-reloaded
+    #gnomeExtensions.appindicator
     gnomeExtensions.blur-my-shell
     gnomeExtensions.removable-drive-menu
     #gnomeExtensions.dash-to-panel
