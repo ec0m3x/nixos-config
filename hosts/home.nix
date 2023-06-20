@@ -59,7 +59,7 @@
       enableUpdateCheck = true;
       extensions = with pkgs.vscode-extensions; [
         james-yu.latex-workshop
-        gitlab.gitlab-workflow
+        #gitlab.gitlab-workflow
         bbenoist.nix
       ];
     };

@@ -19,6 +19,14 @@
 
   boot.initrd.availableKernelModules = [ "amdgpu" "vfio-pci" ];
 
+  boot.initrd.preDeviceCommands = ''
+    DEVS="0000:12:00.0 0000:12:00.1"
+    for DEV in $DEVS; do
+      echo "vfio-pci" > /sys/bus/pci/devices/$DEV/driver_override
+    done
+    modprobe -i vfio-pci
+  '';
+
   boot.extraModprobeConfig = "options vfio-pci ids=1002:73ff,1002:ab28"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
 
 
