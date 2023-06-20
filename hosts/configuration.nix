@@ -2,7 +2,10 @@
 { config, pkgs, lib, inputs, user,  ... }:
 
 {
-  imports = (import ../modules/shell);
+  imports = 
+    (import ../modules/shell) ++
+    (import ../../modules/virtualisation);
+
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -98,7 +101,6 @@
     texlive.combined.scheme-full
     pciutils
     usbutils
-    virt-manager
     discord
   ];
 
@@ -133,10 +135,6 @@
   };
   nixpkgs.config.allowUnfree = true;        # Allow proprietary software.
 
-  ## Enable Virtualisation and libvirtd
-  virtualisation.libvirtd.enable = true;
-  programs.dconf.enable = true;
-  virtualisation.libvirtd.qemu.swtpm.enable = true;
 
 
   system.stateVersion = "23.05";
