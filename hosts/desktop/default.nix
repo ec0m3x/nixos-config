@@ -22,6 +22,7 @@
   imports =                                               # For now, if applying to other system, swap files
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
     [(import ../../modules/programs/games.nix)] ++        # Games
+    [(import ../../modules/virtualisation/gpu-passthrough.nix)] ++        # GPU Pass
     [(import ../../modules/desktop/gnome/default.nix)];   # Window Manager
 
   # Bootloader.
