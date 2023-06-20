@@ -4,7 +4,7 @@
 {
   imports = 
     (import ../modules/shell) ++
-    (import ../../modules/virtualisation);
+    (import ../modules/virtualisation);
 
 
   # Set your time zone.
