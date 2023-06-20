@@ -19,6 +19,8 @@
 
   boot.initrd.availableKernelModules = [ "amdgpu" "vfio-pci" ];
 
+  boot.extraModprobeConfig = "options vfio-pci ids=1002:73ff,1002:ab28"; # grep PCI_ID /sys/bus/pci/devices/*/uevent
+
 
   environment.systemPackages = with pkgs; [               # install looking-glass
     looking-glass-client
