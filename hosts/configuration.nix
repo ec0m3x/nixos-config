@@ -102,6 +102,8 @@
     pciutils
     usbutils
     discord
+    obsidian
+    zotero
   ];
 
   # Enable flatpaks
