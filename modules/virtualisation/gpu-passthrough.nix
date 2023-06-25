@@ -15,7 +15,6 @@
 {
 
   boot.kernelParams = [ "amd_iommu=on" "pcie_aspm=off" ];  # load vfio modules
-  boot.kernelModules = [ "kvm-amd" ];
 
   boot.initrd.availableKernelModules = [ "amdgpu" "vfio-pci" ];
 
