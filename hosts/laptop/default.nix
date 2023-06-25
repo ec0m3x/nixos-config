@@ -32,6 +32,13 @@
       systemd-boot.enable = true;
   	  efi.canTouchEfiVariables = true;
     };
+    kernelParams = [
+      "tuxedo_keyboard.mode=0"
+      "tuxedo_keyboard.brightness=255"
+      "tuxedo_keyboard.color_left=0x00008B"
+      "tuxedo_keyboard.color_center=0x00008B"
+      "tuxedo_keyboard.color_right=0x00008B"
+    ];
   };
   # Setup keyfile
   boot.initrd.secrets = {
