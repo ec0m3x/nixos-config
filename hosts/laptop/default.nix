@@ -54,5 +54,6 @@
 
   # Tuxedo specific
   hardware.tuxedo-keyboard.enable = true;
+  #hardware.tuxedo-control-center.enable = true;
 
 }

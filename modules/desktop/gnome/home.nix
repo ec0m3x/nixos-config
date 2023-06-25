@@ -114,6 +114,12 @@
       command = "kgx";
       name = "open-terminal";
     };
+
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Super>u";
+      command = "firefox";
+      name = "open-terminal";
+    };
     
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom2" = {
       binding = "<Super>n";

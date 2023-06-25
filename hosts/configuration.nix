@@ -109,6 +109,9 @@
   # Enable flatpaks
   services.flatpak.enable = true;
 
+  # Enable Jupyter Server
+  services.jupyter.enable = true;
+
 
   # Auto upgrade
   system.autoUpgrade = {
