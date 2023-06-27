@@ -23,7 +23,7 @@
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
     [(import ../../modules/programs/games.nix)] ++        # Games
     [(import ../../modules/virtualisation/gpu-passthrough.nix)] ++        # GPU Pass
-    [(import ../../modules/desktop/gnome/default.nix)];   # Window Manager
+    [(import ../../modules/desktop/hyprland/default.nix)];   # Window Manager
 
   # Bootloader.
   boot = {                                  # Boot options
@@ -52,7 +52,7 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "nixos-desktop"; # Define your hostname.
+  networking.hostName = "desktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking

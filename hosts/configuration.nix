@@ -26,7 +26,11 @@
   };
 
   # Configure console keymap
-  console.keyMap = "de";
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "de";                          # or us/azerty/etc
+  };
 
   # Enable printing
   services = {
@@ -50,6 +54,7 @@
   hardware.pulseaudio.enable = false;
   hardware.enableAllFirmware = true;
   security.rtkit.enable = true;
+  security.polkit.enable = true;
   services.pipewire = {
     enable = true;
     alsa.enable = true;
@@ -71,15 +76,18 @@
   environment.shells = with pkgs; [ zsh ];
 
   # Install Fonts
-  fonts.fonts = with pkgs; [
-    noto-fonts
-    noto-fonts-cjk
-    noto-fonts-emoji
-    liberation_ttf
-    fira-code
-    fira-code-symbols
-    font-awesome
-    (nerdfonts.override { fonts = [ "DroidSansMono" "FiraCode" "Hack" ]; })
+  fonts.fonts = with pkgs; [                # Fonts
+    carlito                                 # NixOS
+    vegur                                   # NixOS
+    source-code-pro
+    jetbrains-mono
+    font-awesome                            # Icons
+    corefonts                               # MS
+    (nerdfonts.override {                   # Nerdfont Icons override
+      fonts = [
+        "FiraCode"
+      ];
+    })
   ];
 
   # Enable zram
@@ -90,6 +98,10 @@
     memoryPercent = 20;
   };
 
+  environment = {
+    variables = {
+      TERMINAL = "alacritty";
+    };
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
@@ -102,9 +114,6 @@
     texlive.combined.scheme-full
     pciutils
     usbutils
-    discord
-    obsidian
-    zotero
   ];
 
   # Enable flatpaks
