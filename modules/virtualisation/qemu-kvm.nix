@@ -12,7 +12,7 @@
 #    options kvm ignore_nsrs=1
 #  '';                                         # Needed to run OSX-KVM 
 
-  users.groups.libvirtd.members = [ "root" "${user}" ];
+  #users.groups.libvirtd.members = [ "root" "${user}" ];
 
   virtualisation = {
     libvirtd = {
