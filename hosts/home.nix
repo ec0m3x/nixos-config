@@ -91,7 +91,7 @@
     git = {
       enable = true;
       userName = "${user}";
-      userEmail = "me@example.com";
+      userEmail = "seb.koch@yahoo.de";
       #includes = [{ path = "~/.gitconfig.local"; }];
     };
     gh = {
