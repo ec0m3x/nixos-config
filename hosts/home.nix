@@ -75,7 +75,8 @@
       package = pkgs.dracula-theme;
       #package = pkgs.catppuccin-cursors.mochaDark;
       size = 16;
-  };
+    };
+  };  
 
   programs = {
     home-manager.enable = true;

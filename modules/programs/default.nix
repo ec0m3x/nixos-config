@@ -11,7 +11,11 @@
 #
 
 [
-  ./games.nix
+  ./alacritty.nix
+  ./rofi.nix
+  ./wofi.nix
+  #./waybar.nix
+  #./games.nix
 ]
 
 # Games.nix is pulled from desktop/default.nix

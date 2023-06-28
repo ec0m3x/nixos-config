@@ -37,6 +37,8 @@ in
           inherit inputs unstable system user hyprland location;
           host = {
             hostName = "desktop";
+            mainMonitor = "HDMI-A-2";
+            secondMonitor = "DP-3";
           };
         };
         modules = [
@@ -47,7 +49,14 @@ in
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit unstable user; };
+              home-manager.extraSpecialArgs = {
+                inherit unstable user; 
+                host = {
+                  hostName = "desktop";     #For Xorg iGPU  | Videocard     | Hyprland iGPU
+                  mainMonitor = "HDMI-A-2"; #HDMIA3         | HDMI-A-1      | HDMI-A-3
+                  secondMonitor = "DP-3";   #DP1            | DisplayPort-1 | DP-1
+                };
+              };
               home-manager.users.${user} = {
                 imports = [(import ./home.nix)] ++ [(import ./desktop/home.nix)];
               };
@@ -61,6 +70,7 @@ in
           inherit inputs unstable system user hyprland location;
           host = {
             hostName = "laptop";
+            mainMonitor = "eDP-1";
           };
         };  
         modules = [
@@ -71,7 +81,13 @@ in
             home-manager.nixosModules.home-manager {
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {inherit unstable user; };
+              home-manager.extraSpecialArgs = {
+                inherit unstable user;
+                host = {
+                  hostName = "laptop";
+                  mainMonitor = "eDP-1";
+                };
+              };
               home-manager.users.${user} = {
                 imports = [(import ./home.nix)] ++ [(import ./laptop/home.nix)];
               };
