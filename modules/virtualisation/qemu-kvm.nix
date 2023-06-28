@@ -38,8 +38,6 @@
     ];
   };
 
-  programs.dconf.enable = true;
-
 
   services = {                                # Enable file sharing between OS
     gvfs.enable = true;

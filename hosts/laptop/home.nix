@@ -13,7 +13,7 @@
 
   imports =
     [
-      ../../modules/desktop/gnome/home.nix  # Window Manager
+      ../../modules/desktop/hyprland/home.nix  # Window Manager
     ];
 
   home = {                                # Specific packages for desktop

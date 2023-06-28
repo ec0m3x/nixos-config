@@ -21,32 +21,44 @@
 {
   imports =                                               # For now, if applying to other system, swap files
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
-    [(import ../../modules/programs/games.nix)] ++        # Games
-    [(import ../../modules/desktop/gnome/default.nix)];   # Window Manager
+    [(import ../../modules/desktop/hyprland/default.nix)];   # Window Manager
+
 
   # Bootloader.
   boot = {                                  # Boot options
     kernelPackages = pkgs.linuxPackages_latest;
 
     loader = {                              # EFI Boot
-      systemd-boot.enable = true;
-  	  efi.canTouchEfiVariables = true;
+      efi = {
+        canTouchEfiVariables = true;
+        efiSysMountPoint = "/boot";
+      };
+      grub = {                              # Most of grub is set up for dual boot
+        enable = true;
+        #version = 2;
+        devices = [ "nodev" ];
+        efiSupport = true;
+        useOSProber = true;                 # Find all boot options
+        configurationLimit = 10;
+        enableCryptodisk = true;
+      };
+      timeout = 5;                          # Grub auto select time
+    
+      kernelParams = [
+        "tuxedo_keyboard.mode=0"
+        "tuxedo_keyboard.brightness=255"
+        "tuxedo_keyboard.color_left=0x00008B"
+        "tuxedo_keyboard.color_center=0x00008B"
+        "tuxedo_keyboard.color_right=0x00008B"
+        ];
     };
-    kernelParams = [
-      "tuxedo_keyboard.mode=0"
-      "tuxedo_keyboard.brightness=255"
-      "tuxedo_keyboard.color_left=0x00008B"
-      "tuxedo_keyboard.color_center=0x00008B"
-      "tuxedo_keyboard.color_right=0x00008B"
-    ];
   };
+
   # Setup keyfile
   boot.initrd.secrets = {
     "/crypto_keyfile.bin" = null;
   };
 
-  networking.hostName = "laptop"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
