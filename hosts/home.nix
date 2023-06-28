@@ -66,7 +66,7 @@
       jetbrains.pycharm-professional
       vscode
     ];
-    file.".config/wall".source = ../modules/themes/wall;
+    file.".config/wall".source = ../modules/themes/wall.jpg;
     file.".config/wall.mp4".source = ../modules/themes/wall.mp4;
     pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
       gtk.enable = true;

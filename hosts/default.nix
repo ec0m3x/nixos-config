@@ -37,8 +37,8 @@ in
           inherit inputs unstable system user hyprland location;
           host = {
             hostName = "desktop";
-            mainMonitor = "HDMI-A-2";
-            secondMonitor = "DP-3";
+            mainMonitor = "HDMI-A-1";
+            secondMonitor = "DP-1";
           };
         };
         modules = [
@@ -53,8 +53,8 @@ in
                 inherit unstable user; 
                 host = {
                   hostName = "desktop";     #For Xorg iGPU  | Videocard     | Hyprland iGPU
-                  mainMonitor = "HDMI-A-2"; #HDMIA3         | HDMI-A-1      | HDMI-A-3
-                  secondMonitor = "DP-3";   #DP1            | DisplayPort-1 | DP-1
+                  mainMonitor = "HDMI-A-1"; #HDMIA3         | HDMI-A-1      | HDMI-A-3
+                  secondMonitor = "DP-1";   #DP1            | DisplayPort-1 | DP-1
                 };
               };
               home-manager.users.${user} = {
