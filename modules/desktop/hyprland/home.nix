@@ -65,7 +65,7 @@ let
 
     general {
       #main_mod=SUPER
-      border_size=1
+      border_size=2
       gaps_in=5
       gaps_out=7
       col.active_border=0x80ffffff
