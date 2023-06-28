@@ -11,7 +11,7 @@
 #            └─ ./home.nix 
 #
 
-{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, user, location, ... }:
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, user, hyprland, location, ... }:
 
 let
   system = "x86_64-linux";                                  # System architecture
@@ -34,12 +34,13 @@ in
     desktop = lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs unstable system user location;
+          inherit inputs unstable system user hyprland location;
           host = {
             hostName = "desktop";
           };
         };
         modules = [
+            hyprland.nixosModules.default
             ./desktop
             ./configuration.nix
 
@@ -57,12 +58,13 @@ in
     laptop = lib.nixosSystem {
         inherit system;
         specialArgs = {
-          inherit inputs unstable system user location;
+          inherit inputs unstable system user hyprland location;
           host = {
             hostName = "laptop";
           };
         };  
         modules = [
+            hyprland.nixosModules.default
             ./laptop
             ./configuration.nix
             

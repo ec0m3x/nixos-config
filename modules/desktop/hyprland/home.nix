@@ -63,7 +63,7 @@ let
       exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       #exec-once=${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive
-      exec-once=${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive
+      #exec-once=${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive
     '' else "";
 in
 let

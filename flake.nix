@@ -16,9 +16,13 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    hyprland = {                                                          # Official Hyprland flake
+      url = "github:vaxerski/Hyprland";                                   # Add "hyprland.nixosModules.default" to the host modules
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, ... }: 
+  outputs = inputs @ { self, nixpkgs, nixpkgs-unstable, home-manager, hyprland, ... }: 
     let
       system = "x86_64-linux";
       user = "ec0m3x";
@@ -35,7 +39,7 @@
       nixosConfigurations = (
         import ./hosts {
           inherit (nixpkgs) lib;
-          inherit nixpkgs nixpkgs-unstable inputs user system home-manager location;
+          inherit nixpkgs nixpkgs-unstable inputs user system home-manager hyprland location;
         }
       );
     }; 
