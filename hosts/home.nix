@@ -50,6 +50,7 @@
       discord
       obsidian
       zotero
+      obs-studio
       
       # File management
       gnome.file-roller # Archive Manager
