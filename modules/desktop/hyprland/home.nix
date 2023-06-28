@@ -33,8 +33,7 @@ let
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''
-      monitor=${toString mainMonitor},1920x1080@60,1920x0,1
-      monitor=${toString secondMonitor},1920x1080@60,0x0,1
+      monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '' else ''
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '';
@@ -45,15 +44,10 @@ let
       workspace=${toString mainMonitor},3
       workspace=${toString mainMonitor},4
       workspace=${toString mainMonitor},5
-      workspace=${toString secondMonitor},6
     '' else if hostName == "work" then ''
       workspace=${toString mainMonitor},1
       workspace=${toString mainMonitor},2
       workspace=${toString mainMonitor},3
-      workspace=${toString secondMonitor},4
-      workspace=${toString secondMonitor},5
-      workspace=${toString secondMonitor},6
-      workspace=${toString thirdMonitor},7
     '' else "";
   execute = with host;
     if hostName == "desktop" then ''
@@ -101,7 +95,7 @@ let
     }
 
     input {
-      kb_layout=us
+      kb_layout=de
       #kb_options=caps:ctrl_modifier
       follow_mouse=2
       repeat_delay=250
