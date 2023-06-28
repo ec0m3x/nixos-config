@@ -15,7 +15,7 @@
 
 let
   touchpad = with host;
-    if hostName == "laptop" || hostName == "work" then ''
+    if hostName == "laptop" then ''
         touchpad {
           natural_scroll=true
           middle_button_emulation=true
@@ -24,7 +24,7 @@ let
       }
       '' else "";
   gestures = with host;
-    if hostName == "laptop" || hostName == "work" then ''
+    if hostName == "laptop" then ''
       gestures {
         workspace_swipe=true
         workspace_swipe_fingers=3
@@ -42,20 +42,20 @@ let
       workspace=${toString mainMonitor},3
       workspace=${toString mainMonitor},4
       workspace=${toString mainMonitor},5
-    '' else if hostName == "work" then ''
+    '' else if hostName == "laptop" then ''
       workspace=${toString mainMonitor},1
       workspace=${toString mainMonitor},2
       workspace=${toString mainMonitor},3
     '' else "";
   execute = with host;
     if hostName == "desktop" then ''
-      #exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
-      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
-    '' else if hostName == "work" then ''
+      exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
+      #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+    '' else if hostName == "laptop" then ''
       exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-      #exec-once=${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive
-      #exec-once=${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive
+      exec-once=${pkgs.blueman}/bin/blueman-applet
     '' else "";
 in
 let
@@ -191,7 +191,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.blueman}/bin/blueman-applet
+    #exec-once=${pkgs.blueman}/bin/blueman-applet
     ${execute}
   '';
 in
@@ -224,7 +224,7 @@ in
     show-failed-attempts = true;
   };
 
-  services.swayidle = with host; if hostName == "laptop" || hostName == "work" then {
+  services.swayidle = with host; if hostName == "laptop" then {
     enable = true;
     events = [
       { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
