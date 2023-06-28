@@ -198,9 +198,11 @@ in
 {
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
+  programs.swaylock.enable = true;
+
   programs.swaylock.settings = {
     image = "$HOME/.config/wall";
-    color = "000000f0";
+    #color = "000000f0";
     font-size = "24";
     indicator-idle-visible = false;
     indicator-radius = 100;
