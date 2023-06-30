@@ -58,6 +58,8 @@
     "/crypto_keyfile.bin" = null;
   };
 
+  # Enable bluetooth
+  services.blueman.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;

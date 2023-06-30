@@ -46,8 +46,6 @@ let
       workspace=${toString mainMonitor},5
     '' else if hostName == "laptop" then ''
       workspace=${toString mainMonitor},1
-      workspace=${toString mainMonitor},2
-      workspace=${toString mainMonitor},3
     '' else "";
   execute = with host;
     if hostName == "desktop" then ''
