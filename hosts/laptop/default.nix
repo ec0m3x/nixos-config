@@ -43,7 +43,7 @@
         enableCryptodisk = true;
       };
       timeout = 5;                          # Grub auto select time
-    
+    };
       kernelParams = [
         "tuxedo_keyboard.mode=0"
         "tuxedo_keyboard.brightness=255"
@@ -51,7 +51,6 @@
         "tuxedo_keyboard.color_center=0x00008B"
         "tuxedo_keyboard.color_right=0x00008B"
         ];
-    };
   };
 
   # Setup keyfile

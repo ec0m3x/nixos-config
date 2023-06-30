@@ -34,7 +34,9 @@ let
   workspaces = with host;
     if hostName == "desktop" then ''
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
-    '' else {};
+    '' else if hostName == "laptop" then ''
+      monitor=${toString mainMonitor},1920x1080@60,0x0,1
+    '' else "";
   monitors = with host;
     if hostName == "desktop" then ''
       workspace=${toString mainMonitor},1
