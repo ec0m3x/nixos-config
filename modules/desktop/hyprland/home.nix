@@ -180,8 +180,8 @@ let
     bind=,XF86AudioMute,exec,${pkgs.pamixer}/bin/pamixer -t
     bind=SUPER_L,c,exec,${pkgs.pamixer}/bin/pamixer --default-source -t
     bind=,XF86AudioMicMute,exec,${pkgs.pamixer}/bin/pamixer --default-source -t
-    bind=,XF86MonBrightnessDown,exec,${pkgs.light}/bin/light -U 10
-    bind=,XF86MonBrightnessUP,exec,${pkgs.light}/bin/light -A 10
+    bind=,XF86MonBrightnessDown,exec,${pkgs.brightnessctl}/bin/brightnessctl s 10%-
+    bind=,XF86MonBrightnessUP,exec,${pkgs.brightnessctl}/bin/brightnessctl s 10%+
 
     #windowrule=float,^(Rofi)$
     windowrule=float,title:^(Volume Control)$
