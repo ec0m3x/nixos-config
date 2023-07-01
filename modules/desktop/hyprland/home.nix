@@ -20,6 +20,7 @@ let
           natural_scroll=true
           middle_button_emulation=false
           tap-to-click=true
+          clickfinger_behavior = 1
         }
       }
       '' else "";
