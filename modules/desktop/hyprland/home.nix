@@ -37,6 +37,7 @@ let
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '' else if hostName == "laptop" then ''
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
+      monitor=${toString secondMonitor},preferred,auto,1,mirror,${toString mainMonitor}
     '' else "";
   monitors = with host;
     if hostName == "desktop" then ''

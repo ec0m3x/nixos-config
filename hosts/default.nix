@@ -71,6 +71,7 @@ in
           host = {
             hostName = "laptop";
             mainMonitor = "eDP-1";
+            secondMonitor = "HDMI-A-1";
           };
         };  
         modules = [
@@ -86,6 +87,7 @@ in
                 host = {
                   hostName = "laptop";
                   mainMonitor = "eDP-1";
+                  secondMonitor = "HDMI-A-1";
                 };
               };
               home-manager.users.${user} = {
