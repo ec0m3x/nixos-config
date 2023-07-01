@@ -94,6 +94,8 @@
     };
     git = {
       enable = true;
+      userName = "ec0m3x";
+      userEmail = "me@example.com";
     };
     gh = {
       enable = true;
