@@ -67,7 +67,7 @@ let
 
     general {
       #main_mod=SUPER
-      border_size=2
+      border_size=0
       gaps_in=5
       gaps_out=7
       col.active_border=0x80ffffff
@@ -97,7 +97,7 @@ let
     input {
       kb_layout=de
       #kb_options=caps:ctrl_modifier
-      follow_mouse=2
+      follow_mouse=1
       repeat_delay=250
       numlock_by_default=1
       accel_profile=flat

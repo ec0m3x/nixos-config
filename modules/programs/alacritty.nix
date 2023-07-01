@@ -16,6 +16,9 @@
           bold = { style = "Bold"; };
           #size = 8;
         };
+        colors.primary.background = "0x000000";
+        window.opacity = 0.8;
+
         offset = {                            # Positioning
           x = -1;
           y = 0;
