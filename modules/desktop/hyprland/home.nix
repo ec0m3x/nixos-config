@@ -119,6 +119,7 @@ let
     bindm=SUPER,mouse:273,resizewindow
 
     bind=SUPER,Return,exec,${pkgs.alacritty}/bin/alacritty
+    bind=SUPER,B,exec,${pkgs.firefox}/bin/firefox
     bind=SUPER,Q,killactive,
     bind=SUPER,Escape,exit,
     bind=SUPER,L,exec,${pkgs.swaylock}/bin/swaylock
