@@ -18,7 +18,7 @@ let
     if hostName == "laptop" then ''
         touchpad {
           natural_scroll=true
-          middle_button_emulation=true
+          middle_button_emulation=false
           tap-to-click=true
         }
       }
@@ -28,7 +28,7 @@ let
       gestures {
         workspace_swipe=true
         workspace_swipe_fingers=3
-        workspace_swipe_distance=50
+        workspace_swipe_distance=300
       }
     '' else "";
   workspaces = with host;
