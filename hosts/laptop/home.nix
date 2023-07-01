@@ -22,6 +22,7 @@
       #discord          # Comms           # See overlay default.nix
       ffmpeg           # Video Support
       gimp              # Graphical Editor
+      cava
       #inkscape         # Vector Graphical Editor
       #tlp               # Power management
     ];

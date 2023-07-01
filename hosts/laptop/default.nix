@@ -60,14 +60,27 @@
   };
 
   # Enable bluetooth
-  hardware.bluetooth.enable = true;
+  hardware.bluetooth = {
+    enable = true;
+    #hsphfpd.enable = true;         # HSP & HFP daemon
+    settings = {
+      General = {
+        Enable = "Source,Sink,Media,Socket";
+      };
+    };
+  };
   services.blueman.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
 
   # Power management
-  services.tlp.enable = true;
+  services = {
+    tlp.enable = true;                      # TLP and auto-cpufreq for power management
+    #logind.lidSwitch = "ignore";           # Laptop does not go to sleep when lid is closed
+    auto-cpufreq.enable = true;
+  };
+
 
   # Scanner support
   hardware = {
