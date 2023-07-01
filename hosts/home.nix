@@ -50,6 +50,7 @@
       appimage-run
       webex
       discord
+      webcord
       obsidian
       zotero
       obs-studio

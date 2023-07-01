@@ -23,7 +23,7 @@
       ffmpeg           # Video Support
       gimp              # Graphical Editor
       #inkscape         # Vector Graphical Editor
-      tlp               # Power management
+      #tlp               # Power management
     ];
   };
 }

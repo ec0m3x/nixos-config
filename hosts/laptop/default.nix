@@ -66,7 +66,10 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # Power management
+  services.tlp.enable = true;
 
+  # Scanner support
   hardware = {
     sane = {                                    # Used for scanning with Xsane
       enable = true;
