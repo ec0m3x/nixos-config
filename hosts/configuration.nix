@@ -68,7 +68,7 @@
     isNormalUser = true;
     description = "3c0m3x";
     shell = pkgs.zsh;
-    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "scanner" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "video" "audio" "lp" "scanner" "libvirtd" "adbusers"];
   };
 
   # Shell enviroment
@@ -120,6 +120,8 @@
   # Enable flatpaks
   services.flatpak.enable = true;
 
+  # Enable ADB
+  programs.adb.enable = true;
 
   # Auto upgrade
   system.autoUpgrade = {

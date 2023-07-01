@@ -174,7 +174,7 @@
             #  "9"="";
             #  "10"="";
             #};
-            #all-outputs = true;
+            all-outputs = true;
             active-only = false;
             on-click = "activate";
           };

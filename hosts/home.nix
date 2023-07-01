@@ -55,6 +55,9 @@
       zotero
       obs-studio
       
+      # QT
+      adwaita-qt
+
       # File management
       gnome.file-roller # Archive Manager
       okular            # PDF Viewer
