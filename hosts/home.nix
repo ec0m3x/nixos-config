@@ -36,6 +36,8 @@
       pavucontrol       # Audio Control
       vlc               # Media Player
       
+      # Mail
+      thunderbird
       # Cloud-sync
       nextcloud-client
 

@@ -27,6 +27,7 @@
   # Bootloader.
   boot = {                                  # Boot options
     kernelPackages = pkgs.linuxPackages_latest;
+    initrd.availableKernelModules = [ "amdgpu" ];
 
     loader = {                              # EFI Boot
       efi = {

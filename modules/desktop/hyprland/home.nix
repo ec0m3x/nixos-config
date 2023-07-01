@@ -28,7 +28,7 @@ let
       gestures {
         workspace_swipe=true
         workspace_swipe_fingers=3
-        workspace_swipe_distance=100
+        workspace_swipe_distance=50
       }
     '' else "";
   workspaces = with host;
@@ -53,7 +53,8 @@ let
       #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     '' else if hostName == "laptop" then ''
-      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+      exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
+      #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       exec-once=${pkgs.blueman}/bin/blueman-applet
     '' else "";
@@ -191,6 +192,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
+    exec-once=${pkgs.nextcloud-client}/bin/nextcloud
     #exec-once=${pkgs.blueman}/bin/blueman-applet
     ${execute}
   '';

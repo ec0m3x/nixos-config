@@ -63,6 +63,7 @@ in
       swaylock
       wl-clipboard
       wlr-randr
+      polkit_gnome
     ];
   };
 
@@ -72,12 +73,32 @@ in
     '';
   };
 
+systemd = {
+  user.services.polkit-gnome-authentication-agent-1 = {
+    description = "polkit-gnome-authentication-agent-1";
+    wantedBy = [ "graphical-session.target" ];
+    wants = [ "graphical-session.target" ];
+    after = [ "graphical-session.target" ];
+    serviceConfig = {
+        Type = "simple";
+        ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+        Restart = "on-failure";
+        RestartSec = 1;
+        TimeoutStopSec = 10;
+      };
+  };
+};
+
+
   programs = {
     hyprland = {
       enable = true;
       #nvidiaPatches = with host; if hostName == "work" then true else false;
     };
   };
+
+  services.gnome.gnome-keyring.enable = true;
+  
 
   xdg.portal = {                                  # Required for flatpak with window managers and for file browsing
     enable = true;
