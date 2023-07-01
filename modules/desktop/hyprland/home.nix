@@ -53,8 +53,8 @@ let
       #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
     '' else if hostName == "laptop" then ''
-      exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
-      #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+      #exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
+      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
       exec-once=${pkgs.blueman}/bin/blueman-applet
     '' else "";
