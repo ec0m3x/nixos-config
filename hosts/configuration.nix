@@ -123,6 +123,9 @@
   # Enable ADB
   programs.adb.enable = true;
 
+  # Enable dbus
+  services.dbus.enable = true;
+
   # Auto upgrade
   system.autoUpgrade = {
     enable = true;

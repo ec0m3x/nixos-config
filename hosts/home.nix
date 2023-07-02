@@ -91,7 +91,7 @@
     home-manager.enable = true;
     vscode = {
       enable = true;
-      enableUpdateCheck = true;
+      enableUpdateCheck = false;
       extensions = with pkgs.vscode-extensions; [
         james-yu.latex-workshop
         #gitlab.gitlab-workflow
@@ -116,8 +116,8 @@
     };
   };
 
-  services = {                            # Applets
-    nextcloud-client = {                  # Nextcloud
+  services = {                            # Nextcloud
+    nextcloud-client = {                  
         enable = true;
         startInBackground = true;                    
     };
