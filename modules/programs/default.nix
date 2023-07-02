@@ -19,3 +19,4 @@
 ]
 
 # Games.nix is pulled from desktop/default.nix
+# waybar.nix is pulled from modules/desktop/hyprland/default.nix
