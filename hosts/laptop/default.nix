@@ -1,7 +1,9 @@
-# Specific system configuration for desktop
+#
+#  Specific system configuration settings for laptop
+#
 #  flake.nix
 #   ├─ ./hosts
-#   │   └─ ./desktop
+#   │   └─ ./laptop
 #   │        ├─ default.nix *
 #   │        └─ hardware-configuration.nix
 #   └─ ./modules
@@ -10,10 +12,9 @@
 #       │   │   └─ default.nix
 #       │   └─ ./virtualisation
 #       │       └─ default.nix
-#       ├─ ./programs
-#       │   └─ games.nix
 #       └─ ./hardware
 #           └─ default.nix
+#
 
 
 { config, pkgs, lib, user, ... }:
@@ -21,6 +22,7 @@
 {
   imports =                                               # For now, if applying to other system, swap files
     [(import ./hardware-configuration.nix)] ++            # Current system hardware config @ /etc/nixos/hardware-configuration.nix
+    (import ../../modules/hardware) ++                    # Hardware modules
     [(import ../../modules/desktop/hyprland/default.nix)];   # Window Manager
 
 
@@ -59,27 +61,16 @@
     "/crypto_keyfile.bin" = null;
   };
 
-  # Enable bluetooth
-  hardware.bluetooth = {
-    enable = true;
-    #hsphfpd.enable = true;         # HSP & HFP daemon
-    settings = {
-      General = {
-        Enable = "Source,Sink,Media,Socket";
-      };
-    };
-  };
-  services.blueman.enable = true;
 
   # Enable networking
   networking.networkmanager.enable = true;
   systemd.services.ModemManager.enable = true;
 
-  # Power management
   services = {
     tlp.enable = true;                      # TLP and auto-cpufreq for power management
     #logind.lidSwitch = "ignore";           # Laptop does not go to sleep when lid is closed
     auto-cpufreq.enable = true;
+    blueman.enable = true;
   };
 
 
@@ -98,5 +89,11 @@
     enable = true;
     extraRules = '' ACTION=="add|change", SUBSYSTEM=="usb", ENV{DEVTYPE}=="usb_device", ATTR{idVendor}=="12d1", ATTR{idProduct}=="15bb", ATTR{bNumConfigurations}=="3", ATTR{bConfigurationValue}!="3" ATTR{bConfigurationValue}="3" '';
   };
+
+  #temporary bluetooth fix
+  systemd.tmpfiles.rules = [
+    "d /var/lib/bluetooth 700 root root - -"
+  ];
+  systemd.targets."bluetooth".after = ["systemd-tmpfiles-setup.service"];
 
 }

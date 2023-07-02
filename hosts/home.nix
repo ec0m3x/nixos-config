@@ -39,6 +39,7 @@
       
       # Mail
       thunderbird
+      
       # Cloud-sync
       nextcloud-client
 
