@@ -58,7 +58,7 @@
 
 
   # Dual gpu
-  services.switcherooControl.enable = true;
+  #services.switcherooControl.enable = true;
 
   hardware = {
     sane = {                                    # Used for scanning with Xsane
