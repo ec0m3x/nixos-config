@@ -48,6 +48,7 @@ in
       wl-clipboard
       wlr-randr
       polkit_gnome
+      wdisplays
     ];
   };
 

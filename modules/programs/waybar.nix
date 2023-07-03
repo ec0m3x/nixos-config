@@ -200,8 +200,8 @@
             device = "intel_backlight";
             format= "{percent}% <span font='11'>{icon}</span>";
             format-icons = ["" ""];
-            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl s 5%-";
-            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl s 5%+";
+            on-scroll-down = "${pkgs.brightnessctl}/bin/brightnessctl s 1%-";
+            on-scroll-up = "${pkgs.brightnessctl}/bin/brightnessctl s 1%+";
           };
           battery = {
             interval = 60;
