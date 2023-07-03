@@ -34,10 +34,10 @@ let
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''
-      monitor=${toString mainMonitor},1920x1080@60,0x0,1
+      monitor=${toString mainMonitor},highres,auto,1
     '' else if hostName == "laptop" then ''
-      monitor=${toString mainMonitor},1920x1080@60,0x0,1
-      monitor=${toString secondMonitor},preferred,auto,1,mirror,${toString mainMonitor}
+      monitor=${toString mainMonitor},highres,auto,1
+      monitor=${toString secondMonitor},highres,auto,1,mirror,${toString mainMonitor}
     '' else "";
   monitors = with host;
     if hostName == "desktop" then ''
@@ -195,7 +195,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.nextcloud-client}/bin/nextcloud
+    #exec-once=${pkgs.nextcloud-client}/bin/nextcloud
     #exec-once=${pkgs.blueman}/bin/blueman-applet
     ${execute}
   '';
@@ -239,6 +239,7 @@ in
     ];
     timeouts = [
       { timeout= 300; command = "${pkgs.swaylock}/bin/swaylock -f";}
+      { timeout= 900; command = "systemctl suspend";}
     ];
     systemdTarget = "xdg-desktop-portal-hyprland.service";
   } else {
