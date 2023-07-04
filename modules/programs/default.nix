@@ -16,6 +16,7 @@
   ./wofi.nix
   ./chromium.nix
   ./firefox.nix
+  ./git.nix
   #./waybar.nix
   #./games.nix
 ]

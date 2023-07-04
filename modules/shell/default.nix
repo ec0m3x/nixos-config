@@ -11,6 +11,5 @@
 #
 
 [
-  ./git.nix
   ./zsh.nix
 ]
