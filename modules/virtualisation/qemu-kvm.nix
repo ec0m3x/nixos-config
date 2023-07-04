@@ -3,29 +3,28 @@
 {
 
   # Install necessary packages
-  environment.systemPackages = with pkgs; [
-    virt-manager
-    virt-viewer
-    spice
-    spice-gtk
-    spice-protocol
-    win-virtio
-    win-spice
-    gnome.adwaita-icon-theme
-    virtiofsd
-  ];
+  environment = {
+    systemPackages = with pkgs; [
+      virt-manager
+      virt-viewer
+      qemu
+      OVMF
+      gvfs                                    # Used for shared folders between Linux and Windows
+    ];
+  };
 
   # Manage the virtualisation services
   virtualisation = {
     libvirtd = {
-      enable = true;
+      enable = true;                          # Virtual drivers
+      #qemuPackage = pkgs.qemu_kvm;           # Default
       qemu = {
+        verbatimConfig = ''
+         nvram = [ "${pkgs.OVMF}/FV/OVMF.fd:${pkgs.OVMF}/FV/OVMF_VARS.fd" ]
+        '';
         swtpm.enable = true;
-        ovmf.enable = true;
-        ovmf.packages = [ pkgs.OVMFFull.fd ];
       };
     };
-    spiceUSBRedirection.enable = true;
+    spiceUSBRedirection.enable = true;        # USB passthrough
   };
-  services.spice-vdagentd.enable = true;
 }
