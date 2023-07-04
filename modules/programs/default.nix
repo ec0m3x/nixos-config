@@ -14,6 +14,8 @@
   ./alacritty.nix
   ./rofi.nix
   ./wofi.nix
+  ./chromium.nix
+  ./firefox.nix
   #./waybar.nix
   #./games.nix
 ]

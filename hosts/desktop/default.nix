@@ -25,7 +25,7 @@
   ++  [(import ../../modules/virtualisation/gpu-passthrough.nix)] #GPU Passthrough
   ++  [(import ../../modules/desktop/hyprland/default.nix)];      # Window Manager
 
-  # Enable networking
+  # Set hostname
   networking.hostName = "desktop";
 
   # Dual gpu

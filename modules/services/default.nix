@@ -12,10 +12,7 @@
 
 [
   ./dunst.nix
-  #./flameshot.nix
-  #./picom.nix
-  #./polybar.nix
-  #./sxhkd.nix
+  ./nextcloud.nix
   ./udiskie.nix
 ]
 

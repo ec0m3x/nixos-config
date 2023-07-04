@@ -16,8 +16,10 @@
 {
 
   imports =                                   # Home Manager Modules
-    (import ../modules/programs) ++
-    (import ../modules/services);
+      (import ../modules/programs)
+  ++  (import ../modules/services)
+  ++  [(import ../modules/themes/gtk.nix)]
+  ;
 
 
   home = {
@@ -36,6 +38,7 @@
       mpv               # Media Player
       pavucontrol       # Audio Control
       vlc               # Media Player
+      yt-dlp            # Youtube downloader
       
       # Mail
       thunderbird
@@ -75,82 +78,13 @@
       jetbrains.pycharm-professional
       vscode
     ];
+
+
     file.".config/wall".source = ../modules/themes/wallpaper/wall3.jpg;
     file.".config/wall.mp4".source = ../modules/themes/wallpaper/an_wall1.mp4;
-    pointerCursor = {                         # This will set cursor system-wide so applications can not choose their own
-      gtk.enable = true;
-      #name = "Dracula-cursors";
-      name = "Catppuccin-Mocha-Dark-Cursors";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-cursors.mochaDark;
-      size = 16;
-    };
+
   };  
 
-  programs = {
-    home-manager.enable = true;
-    vscode = {
-      enable = true;
-      enableUpdateCheck = false;
-      extensions = with pkgs.vscode-extensions; [
-        james-yu.latex-workshop
-        #gitlab.gitlab-workflow
-        bbenoist.nix
-      ];
-    };
-    git = {
-      enable = true;
-      userName = "ec0m3x";
-      userEmail = "me@example.com";
-    };
-    gh = {
-      enable = true;
-      enableGitCredentialHelper = true;
-      settings = {
-        prompt = "enabled";
-        git_protocol = "https";
-      };
-    };
-    yt-dlp = {
-      enable = true;
-    };
-  };
+  programs.home-manager.enable = true;  #Enable Home-manager
 
-  services = {                            # Nextcloud
-    nextcloud-client = {                  
-        enable = true;
-        startInBackground = true;                    
-    };
-  };
-
-  gtk = {                                     # Theming
-    enable = true;
-    theme = {
-      #name = "Dracula";
-      name = "Catppuccin-Mocha-Compact-Mauve-Dark";
-      #package = pkgs.dracula-theme;
-      package = pkgs.catppuccin-gtk.override {
-        accents = ["mauve"];
-        size = "compact";
-        variant = "mocha";
-      };
-    };
-    iconTheme = {
-      #name = "Papirus-Dark";
-      name = "kora";
-      #package = pkgs.papirus-icon-theme;
-      package = pkgs.kora-icon-theme;
-    };
-    font = {
-      #name = "JetBrains Mono Medium";
-      name = "FiraCode Nerd Font Mono Medium";
-    };                                        # Cursor is declared under home.pointerCursor
-  };
-
-  systemd.user.targets.tray = {               # Tray.target can not be found when xsession is not enabled. This fixes the issue.
-    Unit = {
-      Description = "Home Manager System Tray";
-      Requires = [ "graphical-session-pre.target" ];
-    };
-  };
 }
