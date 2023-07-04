@@ -184,7 +184,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.nextcloud-client}/bin/nextcloud-client
+    exec-once=${pkgs.nextcloud-client}/bin/nextcloud --background
     ${execute}
   '';
 in
