@@ -45,6 +45,10 @@ let
     if hostName == "desktop" then ''
       exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
       #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+    '' else if hostName == "laptop" then ''
+      exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4
+      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
+      exec-once=${pkgs.blueman}/bin/blueman-applet
     '' else "";
 in
 let
@@ -54,7 +58,7 @@ let
 
     general {
       #main_mod=SUPER
-      border_size=3
+      border_size=1
       gaps_in=5
       gaps_out=7
       col.active_border=0x80ffffff
@@ -63,7 +67,7 @@ let
     }
 
     decoration {
-      rounding=5
+      rounding=1
       multisample_edges=true
       active_opacity=0.93
       inactive_opacity=0.93
@@ -109,7 +113,7 @@ let
     bind=SUPER,Return,exec,${pkgs.alacritty}/bin/alacritty
     bind=SUPER,Q,killactive,
     bind=SUPER,Escape,exit,
-    bind=SUPER,L,exec,${pkgs.swaylock}/bin/swaylock
+    bind=SUPER,L,exec,${pkgs.swaylock-effects}/bin/swaylock
     bind=SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm
     bind=SUPER,H,togglefloating,
     #bind=SUPER,Space,exec,${pkgs.rofi}/bin/rofi -show drun
@@ -179,7 +183,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    #exec-once=${pkgs.blueman}/bin/blueman-applet
+    exec-once=${pkgs.nextcloud-client}/bin/nextcloud-client
     ${execute}
   '';
 in
@@ -208,11 +212,11 @@ in
   services.swayidle = with host; if hostName == "laptop" then {
     enable = true;
     events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
+      { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
       { event = "lock"; command = "lock"; }
     ];
     timeouts = [
-      { timeout= 300; command = "${pkgs.swaylock}/bin/swaylock -f";}
+      { timeout= 300; command = "${pkgs.swaylock-effects}/bin/swaylock -f";}
     ];
     systemdTarget = "xdg-desktop-portal-hyprland.service";
   } else {
