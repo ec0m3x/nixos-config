@@ -61,17 +61,18 @@ let
       border_size=1
       gaps_in=5
       gaps_out=7
-      col.active_border=0x80ffffff
-      col.inactive_border=0x66333333
+      col.active_border=rgba(595959ff)
+      col.inactive_border=rgba(00140e10)
       layout=dwindle
     }
 
     decoration {
-      rounding=1
+      rounding=0
       multisample_edges=true
       active_opacity=0.93
       inactive_opacity=0.93
       fullscreen_opacity=1
+      blur_new_optimizations = 1
       blur=true
       drop_shadow=false
     }
@@ -88,7 +89,7 @@ let
     input {
       kb_layout=de
       kb_options=caps:ctrl_modifier
-      follow_mouse=2
+      follow_mouse=1
       repeat_delay=250
       numlock_by_default=1
       accel_profile=flat
