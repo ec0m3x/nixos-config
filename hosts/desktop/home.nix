@@ -20,10 +20,9 @@
     packages = with pkgs; [    
       # Imported in default or from modules
       #discord          # Comms           # See overlay default.nix
-      ffmpeg            # Video Support
+      #ffmpeg            # Video Support
       gimp              # Graphical Editor
-      inkscape          # Vector Graphical Editor
-      brave         
+      inkscape          # Vector Graphical Editor      
     ];
   };
 }

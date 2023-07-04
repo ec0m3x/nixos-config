@@ -6,10 +6,12 @@
 #   │   └─ ./<host>
 #   │       └─ default.nix
 #   └─ ./modules
-#       └─ ./hardware
+#       └─ ./laptop
 #           └─ default.nix *
 #               └─ ...
 #
 [
+  ./batterysave.nix
   ./bluetooth.nix
+  ./tuxedo.nix
 ]

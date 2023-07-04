@@ -57,8 +57,8 @@
       zotero
       obs-studio
       
-      # QT
-      adwaita-qt
+      # LaTex
+      texlive.combined.scheme-full
 
       # File management
       gnome.file-roller # Archive Manager
