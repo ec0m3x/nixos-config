@@ -19,7 +19,7 @@
   ./printing.nix
   ./security.nix
   ./services.nix
-  ./imezone.nix
+  ./timezone.nix
   ./user.nix
   ./zram.nix
 ]
