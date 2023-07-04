@@ -66,12 +66,6 @@ in
     ];
   };
 
-  security.pam.services.swaylock = {
-    text = ''
-     auth include login
-    '';
-  };
-
   programs = {
     hyprland = {
       enable = true;
@@ -79,10 +73,6 @@ in
     };
   };
 
-  xdg.portal = {                                  # Required for flatpak with window managers and for file browsing
-    enable = true;
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
-  };
 
   nixpkgs.overlays = [    # Waybar with experimental features
     (final: prev: {

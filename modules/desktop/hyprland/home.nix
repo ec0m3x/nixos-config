@@ -15,7 +15,7 @@
 
 let
   touchpad = with host;
-    if hostName == "laptop" || hostName == "work" then ''
+    if hostName == "laptop" then ''
         touchpad {
           natural_scroll=true
           middle_button_emulation=true
@@ -24,37 +24,27 @@ let
       }
       '' else "";
   gestures = with host;
-    if hostName == "laptop" || hostName == "work" then ''
+    if hostName == "laptop" then ''
       gestures {
         workspace_swipe=true
         workspace_swipe_fingers=3
-        workspace_swipe_distance=100
+        workspace_swipe_distance=250
       }
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''
       monitor=${toString mainMonitor},1920x1080@60,1920x0,1
-      monitor=${toString secondMonitor},1920x1080@60,0x0,1
-    '' else if hostName == "work" then ''
-      monitor=${toString mainMonitor},1920x1080@60,0x0,1
-      monitor=${toString secondMonitor},1920x1200@60,1920x0,1
-      monitor=${toString thirdMonitor},1920x1200@60,34840x0,1
     '' else ''
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '';
   monitors = with host;
     if hostName == "desktop" then ''
       workspace=${toString mainMonitor},1
-      workspace=${toString secondMonitor},6
-    '' else if hostName == "work" then ''
-      workspace=${toString mainMonitor},1
-      workspace=${toString secondMonitor},4
-      workspace=${toString thirdMonitor},7
     '' else "";
   execute = with host;
     if hostName == "desktop" then ''
-      #exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
-      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
+      exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
+      #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
     '' else if hostName == "work" then ''
       exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
       exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
