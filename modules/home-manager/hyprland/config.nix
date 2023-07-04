@@ -7,7 +7,7 @@ in
   wayland.windowManager.hyprland = {
     extraConfig = "
       $mainMod = SUPER
-      monitor = ,highrr,auto,1
+      monitor = HDMI-A-2,highrr,auto,1
       monitor = ,highres,auto,1
 
 
