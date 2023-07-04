@@ -1,64 +1,99 @@
-{ inputs
-, nixpkgs
-, self
-, ...
-}:
+#
+#  These are the different profiles that can be used when building NixOS.
+#
+#  flake.nix 
+#   └─ ./hosts  
+#       ├─ default.nix *
+#       ├─ configuration.nix
+#       ├─ home.nix
+#       └─ ./desktop OR ./laptop
+#            ├─ ./default.nix
+#            └─ ./home.nix 
+#
+
+{ lib, inputs, nixpkgs, nixpkgs-unstable, home-manager, user, hyprland, location, ... }:
 
 let
-  # System architecture
-  system = "x86_64-linux";
-  # Allow unfree software
+  system = "x86_64-linux";                                  # System architecture
+
   pkgs = import nixpkgs {
     inherit system;
-    config.allowUnfree = true;
+    config.allowUnfree = true;                              # Allow proprietary software
   };
-  lib = nixpkgs.lib;
 
+  unstable = import nixpkgs-unstable {
+    inherit system;
+    config.allowUnfree = true;                              # Allow proprietary software
+  };
+
+
+  lib = nixpkgs.lib;
 in
+
 {
-    # Config for desktop
-    desktop = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit self inputs; };
-      modules = 
-      [ (import ../modules/nixos/bootloader.nix) ]
-      ++ [ (import ../modules/nixos/hardware.nix) ]
-      ++ [ (import ../modules/nixos/xserver.nix) ]
-      ++ [ (import ../modules/nixos/steam.nix) ]
-      ++ [ (import ../modules/nixos/network-desktop.nix) ]
-      ++ [ (import ../modules/nixos/pipewire.nix) ]
-      ++ [ (import ../modules/nixos/program.nix) ]
-      ++ [ (import ../modules/nixos/printing.nix)]
-      ++ [ (import ../modules/nixos/security.nix) ]
-      ++ [ (import ../modules/nixos/services.nix) ]
-      ++ [ (import ../modules/nixos/system.nix) ]
-      ++ [ (import ../modules/nixos/user.nix) ]
-      ++ [ (import ../modules/nixos/wayland.nix) ]
-      ++ [ (import ../modules/nixos/virtualization.nix) ]
-      ++ [ (import ./desktop/hardware-configuration.nix) ]
-    ;
-  };
-    # Config for laptop
-    laptop = nixpkgs.lib.nixosSystem {
-      specialArgs = { inherit self inputs; };
-      modules = 
-      [ (import ../modules/nixos/bootloader.nix) ]
-      ++ [ (import ../modules/nixos/hardware.nix) ]
-      ++ [ (import ../modules/nixos/bluetooth.nix) ]
-      ++ [ (import ../modules/nixos/xserver.nix) ]
-      #++ [ (import ../modules/nixos/steam.nix) ]
-      ++ [ (import ../modules/nixos/network-laptop.nix) ]
-      ++ [ (import ../modules/nixos/pipewire.nix) ]
-      ++ [ (import ../modules/nixos/program.nix) ]
-      ++ [ (import ../modules/nixos/printing.nix)]
-      ++ [ (import ../modules/nixos/security.nix) ]
-      ++ [ (import ../modules/nixos/services.nix) ]
-      ++ [ (import ../modules/nixos/battery.nix) ]
-      ++ [ (import ../modules/nixos/tuxedo.nix) ]
-      ++ [ (import ../modules/nixos/system.nix) ]
-      ++ [ (import ../modules/nixos/user.nix) ]
-      ++ [ (import ../modules/nixos/wayland.nix) ]
-      ++ [ (import ../modules/nixos/virtualization.nix) ]
-      ++ [ (import ./laptop/hardware-configuration.nix) ]
-    ;
-  };
+    desktop = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs unstable system user hyprland location;
+          host = {
+            hostName = "desktop";
+            mainMonitor = "HDMI-A-1";
+            #secondMonitor = "DP-1";
+          };
+        };
+        modules = [
+            hyprland.nixosModules.default
+            ./desktop
+            ./configuration.nix
+
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit unstable user; 
+                host = {
+                  hostName = "desktop";     #For Xorg iGPU  | Videocard     | Hyprland iGPU
+                  mainMonitor = "HDMI-A-1"; #HDMIA3         | HDMI-A-1      | HDMI-A-3
+                  #secondMonitor = "DP-1";   #DP1            | DisplayPort-1 | DP-1
+                };
+              };
+              home-manager.users.${user} = {
+                imports = [(import ./home.nix)] ++ [(import ./desktop/home.nix)];
+              };
+            }
+        ];
+    };
+
+    laptop = lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          inherit inputs unstable system user hyprland location;
+          host = {
+            hostName = "laptop";
+            mainMonitor = "eDP-1";
+            secondMonitor = "HDMI-A-1";
+          };
+        };  
+        modules = [
+            hyprland.nixosModules.default
+            ./laptop
+            ./configuration.nix
+            
+            home-manager.nixosModules.home-manager {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit unstable user;
+                host = {
+                  hostName = "laptop";
+                  mainMonitor = "eDP-1";
+                  secondMonitor = "HDMI-A-1";
+                };
+              };
+              home-manager.users.${user} = {
+                imports = [(import ./home.nix)] ++ [(import ./laptop/home.nix)];
+              };
+            }
+        ];
+    };
 }
