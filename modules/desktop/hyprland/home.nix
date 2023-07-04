@@ -82,7 +82,7 @@ let
     }
 
     input {
-      kb_layout=us
+      kb_layout=de
       kb_options=caps:ctrl_modifier
       follow_mouse=2
       repeat_delay=250
@@ -179,37 +179,30 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.blueman}/bin/blueman-applet
+    #exec-once=${pkgs.blueman}/bin/blueman-applet
     ${execute}
   '';
 in
 {
   xdg.configFile."hypr/hyprland.conf".text = hyprlandConf;
 
-  programs.swaylock.settings = {
-    #image = "$HOME/.config/wall";
-    color = "000000f0";
-    font-size = "24";
-    indicator-idle-visible = false;
-    indicator-radius = 100;
-    indicator-thickness = 20;
-    inside-color = "00000000";
-    inside-clear-color = "00000000";
-    inside-ver-color = "00000000";
-    inside-wrong-color = "00000000";
-    key-hl-color = "79b360";
-    line-color = "000000f0";
-    line-clear-color = "000000f0";
-    line-ver-color = "000000f0";
-    line-wrong-color = "000000f0";
-    ring-color = "ffffff50";
-    ring-clear-color = "bbbbbb50";
-    ring-ver-color = "bbbbbb50";
-    ring-wrong-color = "b3606050";
-    text-color = "ffffff";
-    text-ver-color = "ffffff";
-    text-wrong-color = "ffffff";
-    show-failed-attempts = true;
+  programs.swaylock = {
+    enable = true;
+    package = pkgs.swaylock-effects;
+    settings = {
+      clock = true;
+      screenshots = true;
+      indicator = true;
+      indicator-radius = 100;
+      indicator-thickness = 7;
+      effect-blur = "7x5";
+      effect-vignette = "0.5:0.5";
+      ring-color = "3b4252";
+      key-hl-color = "880033";
+      line-color = "00000000";
+      inside-color = "00000088";
+      separator-color = "00000000";
+    };
   };
 
   services.swayidle = with host; if hostName == "laptop" then {

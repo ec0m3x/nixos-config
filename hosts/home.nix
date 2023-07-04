@@ -50,8 +50,6 @@
       bitwarden      
       onlyoffice-bin
       libreoffice-fresh
-      firefox
-      google-chrome
       appimage-run
       webex
       discord

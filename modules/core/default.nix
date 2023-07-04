@@ -21,7 +21,7 @@
   ./services.nix
   ./timezone.nix
   ./user.nix
-  ./wayland.nix
+  #./wayland.nix
   ./xserver.nix
   ./zram.nix
 ]
