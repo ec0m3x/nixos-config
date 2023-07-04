@@ -17,22 +17,25 @@ let
   exec = "exec Hyprland";
 in
 {
-  imports = [ ../../programs/waybar.nix ];
+  imports = 
+  [(import ../../programs/waybar.nix )]
+  ++ [(import ../../core/wayland.nix)]
+  ;
 
   environment = {
-    loginShellInit = ''
-      if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
-        ${exec}
-      fi
-    '';                                   # Will automatically open Hyprland when logged into tty1
+    #loginShellInit = ''
+    #  if [ -z $DISPLAY ] && [ "$(tty)" = "/dev/tty1" ]; then
+    #    ${exec}
+    #  fi
+    #'';                                   # Will automatically open Hyprland when logged into tty1
 
-    variables = {
+    #variables = {
       #WLR_NO_HARDWARE_CURSORS="1";         # Possible variables needed in vm
       #WLR_RENDERER_ALLOW_SOFTWARE="1";
-      XDG_CURRENT_DESKTOP="Hyprland";
-      XDG_SESSION_TYPE="wayland";
-      XDG_SESSION_DESKTOP="Hyprland";
-    };
+      #XDG_CURRENT_DESKTOP="Hyprland";
+      #XDG_SESSION_TYPE="wayland";
+      #XDG_SESSION_DESKTOP="Hyprland";
+    #};
     sessionVariables = {
       NIXOS_OZONE_WL = "1";
       __GL_GSYNC_ALLOWED = "0";
@@ -70,12 +73,12 @@ in
     ];
   };
 
-  programs = {
-    hyprland = {
-      enable = true;
-      #nvidiaPatches = with host; if hostName == "work" then true else false;
-    };
-  };
+  #programs = {
+  #  hyprland = {
+  #    enable = true;
+  #    #nvidiaPatches = with host; if hostName == "work" then true else false;
+  #  };
+  #};
 
 
   nixpkgs.overlays = [    # Waybar with experimental features
