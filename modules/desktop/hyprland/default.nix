@@ -85,9 +85,9 @@ in
   #  ];
   #};
 
-  #nixpkgs.overlays = [    # Waybar with experimental features
-  #  (final: prev: {
-  #    waybar = hyprland.packages.${system}.waybar-hyprland;
-  #  })
-  #];
+  nixpkgs.overlays = [    # Waybar with experimental features
+    (final: prev: {
+      waybar = hyprland.packages.${system}.waybar-hyprland;
+    })
+  ];
 }
