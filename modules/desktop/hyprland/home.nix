@@ -33,7 +33,7 @@ let
     '' else "";
   workspaces = with host;
     if hostName == "desktop" then ''
-      monitor=${toString mainMonitor},1920x1080@60,1920x0,1
+      monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '' else ''
       monitor=${toString mainMonitor},1920x1080@60,0x0,1
     '';
@@ -45,11 +45,6 @@ let
     if hostName == "desktop" then ''
       exec-once=${pkgs.mpvpaper}/bin/mpvpaper -sf -v -o "--loop --panscan=1" '*' $HOME/.config/wall.mp4  # Moving wallpaper (small performance hit)
       #exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
-    '' else if hostName == "work" then ''
-      exec-once=${pkgs.swaybg}/bin/swaybg -m center -i $HOME/.config/wall
-      exec-once=${pkgs.networkmanagerapplet}/bin/nm-applet --indicator
-      #exec-once=${pkgs.google-drive-ocamlfuse}/bin/google-drive-ocamlfuse /GDrive
-      exec-once=${pkgs.rclone}/bin/rclone mount --daemon gdrive: /GDrive
     '' else "";
 in
 let
@@ -217,7 +212,7 @@ in
     show-failed-attempts = true;
   };
 
-  services.swayidle = with host; if hostName == "laptop" || hostName == "work" then {
+  services.swayidle = with host; if hostName == "laptop" then {
     enable = true;
     events = [
       { event = "before-sleep"; command = "${pkgs.swaylock}/bin/swaylock -f"; }
