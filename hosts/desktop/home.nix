@@ -10,7 +10,6 @@
 { pkgs, ... }:
 
 {
-
   imports =
     [
       ../../modules/desktop/hyprland/home.nix  # Window Manager

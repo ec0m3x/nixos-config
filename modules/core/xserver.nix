@@ -1,6 +1,6 @@
 { pkgs
-, ...
 , user
+, ...
 }:{
   services.xserver = {
     enable = true;

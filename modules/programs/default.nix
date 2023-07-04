@@ -17,7 +17,7 @@
   ./chromium.nix
   ./firefox.nix
   ./git.nix
-  ./waybar.nix
+  #./waybar.nix
   #./games.nix
 ]
 
