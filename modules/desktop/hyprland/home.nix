@@ -89,7 +89,7 @@ let
     input {
       kb_layout=de
       kb_options=caps:ctrl_modifier
-      follow_mouse=1
+      follow_mouse=2
       repeat_delay=250
       numlock_by_default=1
       accel_profile=flat
@@ -102,6 +102,17 @@ let
     dwindle {
       pseudotile=false
       force_split=2
+    }
+
+    misc {
+      disable_autoreload = true
+      disable_hyprland_logo = true
+      always_follow_on_dnd = true
+      layers_hog_keyboard_focus = true
+      animate_manual_resizes = false
+      enable_swallow = true
+      swallow_regex =
+      focus_on_activate = true
     }
 
     debug {
@@ -117,6 +128,7 @@ let
     bind=SUPER,L,exec,${pkgs.swaylock-effects}/bin/swaylock
     bind=SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm
     bind=SUPER,H,togglefloating,
+    bind=SUPER,X,exec,pkill wlogout || wlogout -b 4
     #bind=SUPER,Space,exec,${pkgs.rofi}/bin/rofi -show drun
     bind=SUPER,Space,exec,${pkgs.wofi}/bin/wofi --show drun
     bind=SUPER,P,pseudo,
@@ -184,7 +196,7 @@ let
 
     exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
     exec-once=${pkgs.waybar}/bin/waybar
-    exec-once=${pkgs.nextcloud-client}/bin/nextcloud --background
+    exec-once=sleep 10 && ${pkgs.nextcloud-client}/bin/nextcloud --background
     ${execute}
   '';
 in
@@ -210,17 +222,35 @@ in
     };
   };
 
-  services.swayidle = with host; if hostName == "laptop" then {
+  services.swayidle = {
     enable = true;
     events = [
-      { event = "before-sleep"; command = "${pkgs.swaylock-effects}/bin/swaylock -f"; }
-      { event = "lock"; command = "lock"; }
+      {
+        event = "before-sleep";
+        command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
+      }
+      {
+        event = "lock";
+        command = "${pkgs.swaylock-effects}/bin/swaylock -fF";
+      }
     ];
     timeouts = [
-      { timeout= 300; command = "${pkgs.swaylock-effects}/bin/swaylock -f";}
+      {
+        timeout = 90;
+        command = "swaylock";
+      }
+      {
+        timeout = 900;
+        command = "systemctl suspend";
+      }
+      # {
+      #   timeout = 180;
+      #   command = "systemctl suspend";
+      #   # command = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms off";
+      #   # resumeCommand = "${config.wayland.windowManager.hyprland.package}/bin/hyprctl dispatch dpms on";
+      # }
     ];
-    systemdTarget = "xdg-desktop-portal-hyprland.service";
-  } else {
-    enable = false;
   };
+
+  #systemd.user.services.swayidle.Install.WantedBy = lib.mkForce ["hyprland-session.target"];
 }

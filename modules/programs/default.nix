@@ -17,6 +17,8 @@
   ./chromium.nix
   ./firefox.nix
   ./git.nix
+  ./neofetch
+  ./wlogout
   #./waybar.nix
   #./games.nix
 ]

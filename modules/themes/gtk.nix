@@ -14,10 +14,10 @@
       enable = true;
       theme = {
         #name = "Dracula";
-        name = "Catppuccin-Mocha-Compact-Mauve-Dark";
+        name = "Catppuccin-Mocha-Compact-Blue-Dark";
         #package = pkgs.dracula-theme;
         package = pkgs.catppuccin-gtk.override {
-          accents = ["mauve"];
+          accents = ["blue"];
           size = "compact";
           variant = "mocha";
         };
