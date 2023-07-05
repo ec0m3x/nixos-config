@@ -28,8 +28,6 @@
         "keybind" = "e";
       }
     ];
-    #
   };
   home.file."$HOME/.config/wlogout/style.css".source = ./assets/style.css;
-  #xdg.configFile."wlogout".source = ./config;
 }
