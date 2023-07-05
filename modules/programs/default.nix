@@ -19,6 +19,7 @@
   ./git.nix
   ./neofetch
   ./wlogout
+  ./swaylock
   #./waybar.nix
   #./games.nix
 ]

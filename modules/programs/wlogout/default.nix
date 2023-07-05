@@ -5,7 +5,7 @@
     [
       {
         "label" = "lock";
-        "action" = "swaylock";
+        "action" = "swaylock -fF --fade-in 2";
         "text" = "Lock";
         "keybind" = "l";
       }
@@ -22,9 +22,9 @@
         "keybind" = "s";
       }
       {
-        "label" = "logout";
-        "action" = "loginctl terminate-user $USER";
-        "text" = "Logout";
+        "label" = "suspend";
+        "action" = "systemctl suspend";
+        "text" = "Standby";
         "keybind" = "e";
       }
     ];
