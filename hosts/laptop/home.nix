@@ -24,6 +24,7 @@
       cava
       #inkscape         # Vector Graphical Editor
       #tlp               # Power management
+      powertop
     ];
   };
 
