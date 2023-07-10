@@ -28,13 +28,13 @@
   };
 
 
-  services = {                            # Applets
-    blueman-applet.enable = true;         # Bluetooth
+#  services = {                            # Applets
+#    blueman-applet.enable = true;         # Bluetooth
 #   cbatticon = {
 #     enable = true;
 #     criticalLevelPercent = 10;
 #     lowLevelPercent = 20;
 #     iconType = null;
 #   };
-  };
+#  };
 }
