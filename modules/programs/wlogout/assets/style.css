@@ -1,3 +1,7 @@
+* {
+	background-image: none;
+}
+
 window {
     font-family: JetBrainsMono Nerd Font;
     font-size: 14pt;

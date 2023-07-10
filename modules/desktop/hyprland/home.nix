@@ -129,7 +129,7 @@ let
     bind=SUPER,L,exec,${pkgs.swaylock-effects}/bin/swaylock
     bind=SUPER,E,exec,${pkgs.pcmanfm}/bin/pcmanfm
     bind=SUPER,H,togglefloating,
-    bind=SUPER,X,exec,pkill wlogout || wlogout
+    bind=SUPER,X,exec,pkill wlogout || wlogout -b 4
     #bind=SUPER,Space,exec,${pkgs.rofi}/bin/rofi -show drun
     bind=SUPER,Space,exec,${pkgs.wofi}/bin/wofi --show drun
     bind=SUPER,P,pseudo,
