@@ -4,12 +4,6 @@
     layout =
     [
       {
-        "label" = "lock";
-        "action" = "swaylock -fF --fade-in 2";
-        "text" = "Lock";
-        "keybind" = "l";
-      }
-      {
         "label" = "reboot";
         "action" = "systemctl reboot";
         "text" = "Reboot";
