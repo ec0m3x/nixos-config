@@ -125,9 +125,9 @@
 
           modules-right =
             if hostName == "desktop" then
-              [ "custom/ds4" "custom/mouse" "custom/kb" "custom/pad" "network" "cpu" "memory" "custom/pad" "pulseaudio" "custom/sink" "custom/pad" "clock" "tray" ]
+              [ "custom/ds4" "custom/mouse" "custom/kb" "custom/pad" "network" "cpu" "memory" "custom/pad" "pulseaudio" "custom/sink" "custom/pad" "clock" "tray" "custom/pad" ]
             else
-              [ "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "clock" "tray" ];
+              [ "cpu" "memory" "custom/pad" "battery" "custom/pad" "backlight" "custom/pad" "pulseaudio" "custom/pad" "clock" "tray" "custom/pad" ];
 
           "custom/pad" = {
             format = "      ";
