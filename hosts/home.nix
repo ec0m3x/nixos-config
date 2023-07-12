@@ -37,6 +37,7 @@
       feh               # Image Viewer
       mpv               # Media Player
       pavucontrol       # Audio Control
+      pamixer
       vlc               # Media Player
       yt-dlp            # Youtube downloader
       
