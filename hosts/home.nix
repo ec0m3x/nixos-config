@@ -42,7 +42,7 @@
       yt-dlp            # Youtube downloader
       
       # Mail
-      thunderbird
+      thunderbirdPackages.thunderbird-115
       
       # Cloud-sync
       nextcloud-client
