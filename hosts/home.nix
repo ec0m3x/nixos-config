@@ -58,6 +58,7 @@
       obsidian
       zotero
       obs-studio
+      anydesk
       
       # LaTex
       texlive.combined.scheme-full
