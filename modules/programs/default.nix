@@ -16,6 +16,7 @@
   ./wofi.nix
   ./chromium.nix
   ./firefox.nix
+  ./thunderbird.nix
   ./git.nix
   ./neofetch
   ./wlogout
