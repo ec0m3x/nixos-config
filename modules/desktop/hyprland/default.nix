@@ -75,15 +75,16 @@ in
   programs = {
     hyprland = {
       enable = true;
+      package = hyprland.packages.${pkgs.system}.hyprland;
     };
   };
-  #xdg.portal = {
-  #  enable = true;
-  #  extraPortals = [
-  #    pkgs.xdg-desktop-portal-hyprland
-  #    # pkgs.xdg-desktop-portal-gtk
-  #  ];
-  #};
+  xdg.portal = {
+    enable = true;
+    extraPortals = [
+       #pkgs.xdg-desktop-portal-hyprland
+       pkgs.xdg-desktop-portal-gtk
+    ];
+  };
 
   nixpkgs.overlays = [    # Waybar with experimental features
     (final: prev: {

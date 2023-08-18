@@ -59,6 +59,7 @@
       zotero
       obs-studio
       anydesk
+      google-chrome
       
       # LaTex
       texlive.combined.scheme-full
