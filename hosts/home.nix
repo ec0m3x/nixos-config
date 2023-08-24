@@ -60,6 +60,7 @@
       obs-studio
       anydesk
       google-chrome
+      gwenview
       
       # LaTex
       texlive.combined.scheme-full
